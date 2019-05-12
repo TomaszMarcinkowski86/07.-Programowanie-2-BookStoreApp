@@ -18,15 +18,16 @@ public class LoadFile extends Book{
         File bookListFile = new File(path);
 
         BufferedReader br = new BufferedReader(new FileReader(bookListFile));
-        List<Book> bookList = new ArrayList<>();
+       // List<Book> bookList = new ArrayList<>();
 
         String linia;
         while
         ((linia = br.readLine()) != null) {
             String[] slowo = linia.split(";");
             Book ksiazka =new Book(slowo[0],slowo[1],slowo[2]); //tworzymy książkę do niej wrzucamy to co po splicie wyszlo
-            bookList.add(ksiazka);
+            //bookList.add(ksiazka);
+            BookList.getBookList().add(ksiazka);
         }
-        return bookList;
+        return BookList.getBookList();
     }
 }

@@ -7,6 +7,15 @@ import java.util.Scanner;
 
 public class BookStore {
 
+  static  List<Book> bookList;
+
+    static {
+        try {
+            bookList = LoadFile.loadFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -20,7 +29,7 @@ public class BookStore {
 
 
         Scanner scanner = new Scanner(System.in);
-        List<Book> bookList = LoadFile.loadFile();
+
 
         int choose;
         do {
@@ -31,7 +40,9 @@ public class BookStore {
                     System.out.println(bookList);
                     break;
                 case 2:
-                    System.out.println("Dodaj książkę");
+                    AddBook.addBook();
+                    System.out.println("Dodałeś nową książkę: " );
+                    System.out.println("Co chcesz zrobić dalej? " );
                     break;
                 case 3:
                     System.out.println("Usuń");

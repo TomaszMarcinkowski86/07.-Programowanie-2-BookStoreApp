@@ -10,7 +10,6 @@ public class Book {
         this.tytul = tytul;
         this.isbnNumer = isbnNumer;
         this.rokWydania = rokWydania;
-
     }
 
     public String getTytul() {
