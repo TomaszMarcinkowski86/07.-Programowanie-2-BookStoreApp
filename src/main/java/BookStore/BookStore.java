@@ -45,7 +45,8 @@ public class BookStore {
                     System.out.println("Co chcesz zrobić dalej? " );
                     break;
                 case 3:
-                    System.out.println("Usuń");
+                    DeleteBook.deleteBook();
+                    System.out.println("Co chcesz zrobić dalej? " );
                     break;
                 case 4:
                     System.out.println("Edytuj rok wydania");

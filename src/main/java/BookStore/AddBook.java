@@ -2,8 +2,6 @@ package BookStore;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class AddBook {
@@ -12,7 +10,6 @@ public class AddBook {
     static void addBook() {
 
         Scanner scanner = new Scanner(System.in);
-        List<Book> bookList = new ArrayList<>();
 
         System.out.println("Podaj tytuł: ");
         String tytul = scanner.nextLine();
@@ -31,7 +28,6 @@ public class AddBook {
         }
         Book nowaKsiazka = new Book(tytul, rokWydania, isbnNumer);
         BookList.getBookList().add(nowaKsiazka);
-
 
     }
 }
