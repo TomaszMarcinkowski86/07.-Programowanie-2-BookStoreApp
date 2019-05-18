@@ -12,12 +12,11 @@ public class DeleteBook {
         String tylkoTytul = BookList.getBookList().stream().map(book -> book.getTytul()).collect(Collectors.joining("; "));
         System.out.println("Podaj tytuł ksiązki do usunięcia: " + tylkoTytul );
         String tytul = scanner.nextLine();
-//        if(tytul!=tylkoTytul){
-//            System.out.println("Nieprawidłowy tytuł!!");
-//            tytul = scanner.nextLine();
-//        }
-        int indeks = tytul.indexOf(tytul);
+//       while(tytul.equals(tylkoTytul.split(";"))){
+//           System.out.println("Nieprawidłowy tytuł!!");
+//           tytul = scanner.nextLine();
+//     }
+        int indeks = tytul.indexOf(tylkoTytul);
         BookList.getBookList().remove(indeks);
-
     }
 }

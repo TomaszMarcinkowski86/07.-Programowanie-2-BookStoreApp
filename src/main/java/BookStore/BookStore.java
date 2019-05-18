@@ -27,10 +27,8 @@ public class BookStore {
         System.out.println("4. Edytuj rok wydania");
         System.out.println("5. Zapisz listę książek do pliku csv");
         System.out.println("6. Wyjdź");
-
-
+        
         Scanner scanner = new Scanner(System.in);
-
 
         int choose;
         do {
