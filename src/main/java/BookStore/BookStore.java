@@ -1,19 +1,20 @@
 package BookStore;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 
 public class BookStore {
 
-  static  List<Book> bookList;
+  static  List<Book> bookList = new ArrayList<Book>();
 
     static {
         try {
             bookList = LoadFile.loadFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            System.out.println("Nie znaleziono pliku");
         }
     }
 

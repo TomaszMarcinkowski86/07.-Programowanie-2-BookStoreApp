@@ -1,32 +1,29 @@
 package BookStore;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoadFile extends Book{
+public class LoadFile {
 
-    public LoadFile(String tytul, String isbnNumer, String rokWydania) {
-        super(tytul, isbnNumer, rokWydania);
-    }
 
-    static List<Book> loadFile() throws IOException {
-        String path = "D:/JAVA/Programowanie2/src/sources/books.csv";
+    static List<Book> loadFile() throws FileNotFoundException {
+        String path = "D:/JAVA/Programowanie2/src/main/resources/books.csv";
         File bookListFile = new File(path);
 
-        BufferedReader br = new BufferedReader(new FileReader(bookListFile));
-       // List<Book> bookList = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(bookListFile))) {
 
-        String linia;
-        while
-        ((linia = br.readLine()) != null) {
-            String[] slowo = linia.split(";");
-            Book ksiazka =new Book(slowo[0],slowo[1],slowo[2]); //tworzymy książkę do niej wrzucamy to co po splicie wyszlo
-            //bookList.add(ksiazka);
-            BookList.getBookList().add(ksiazka);
+            String linia = br.readLine();
+            while (linia != null) {
+
+                String[] slowo = linia.split(";");
+                Book ksiazka = new Book(slowo[0], slowo[1], slowo[2]);
+                BookList.getBookList().add(ksiazka);
+                linia = br.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+
         }
         return BookList.getBookList();
     }

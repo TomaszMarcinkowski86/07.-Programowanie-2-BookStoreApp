@@ -15,13 +15,5 @@ public class BookList {
         return bookList;
     }
 
-    public static void setBookList(List<Book> bookList) {
-        bookList = bookList;
-    }
 
-    private BookList() {
-        if (BOOK_LIST != null) {
-            throw new IllegalStateException("BookList istnieje");
-        }
-    }
 }
