@@ -1,9 +1,7 @@
 package BookStore;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 import java.util.List;
 
 public class BookFunction {
@@ -58,10 +56,23 @@ public class BookFunction {
         comparatorMethod(bookList);
         return bookList.get(bookList.size() - 1);
     }
-//Stream zmienia mi to na mapę intów i sumuje. To co w mapie Integer.praseInt bo mam stringa
+
+    //Stream zmienia mi to na mapę intów i sumuje. To co w mapie Integer.praseInt bo mam stringa
     public int returnSumPublishmentYear(List<Book> bookList) {
-       return bookList.stream().mapToInt(Book-> Integer.parseInt(Book.getRokWydania())).sum();
+        return bookList.stream().mapToInt(Book -> Integer.parseInt(Book.getRokWydania())).sum();
     }
 
+    //Stream filtruje ksiązki których data większa od 2007. wcześniej zamieniam na integera a na koniec zliczam
+    public long returnNumberBooksAfter2007(List<Book> bookList) {
+        return bookList.stream().filter(ksiazka -> Integer.parseInt(ksiazka.getRokWydania()) > 2007).count();
+    }
+
+    public boolean allAfter2000(List<Book> bookList) {
+        return bookList.stream().allMatch(ksiazka -> Integer.parseInt(ksiazka.getRokWydania()) > 2000);
+    }
+    public Double averageDate(List<Book> bookList) {
+        return bookList.stream().mapToInt(ksiazka -> Integer.parseInt(ksiazka.getRokWydania())).average().getAsDouble();
+
+    }
 }
 

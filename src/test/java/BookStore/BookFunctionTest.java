@@ -37,7 +37,7 @@ public class BookFunctionTest {
 
     @Test
     @DisplayName("Ostatnie dwie")
-    public void reurnTwoLastTest() {
+    public void reurnTwoLast() {
 
         //AsertJ biblioteki do obsługi kolekcji
         assertThat(bookFunction.reurnTwoLast(bookList)).contains(bookList.get(4)).contains(bookList.get(5));
@@ -45,22 +45,42 @@ public class BookFunctionTest {
 
     @Test
     @DisplayName("Najwcześniej wydana")
-    public  void returErliestYearTest (){
+    public  void returErliestYear(){
         Book book = bookFunction.returnErliestBook(bookList);
         Assert.assertEquals("tytul6",book.getTytul());
 
     }
     @Test
     @DisplayName("Najpóźniej wydana")
-    public  void returLatestYearTest (){
+    public  void returLatestYear(){
         Book book = bookFunction.returnLatestBook(bookList);
         Assert.assertEquals("tytul4",book.getTytul());
     }
     @Test
     @DisplayName("Suma lat wydania")
-    public void returnSumPublishmentYearTest(){
+    public void returnSumPublishmentYear(){
        int suma = bookFunction.returnSumPublishmentYear(bookList);
        Assert.assertEquals(12021,suma);
+
+    }
+
+    @Test
+    public void returnNumberBooksAfter2007() {
+        long liczbaKsiązekPo2007 = bookFunction.returnNumberBooksAfter2007(bookList);
+        Assert.assertEquals(1,liczbaKsiązekPo2007);
+    }
+
+    @Test
+    public void allAfter2000() {
+        boolean allAfter2000 = bookFunction.allAfter2000(bookList);
+        Assert.assertFalse(allAfter2000);
+    }
+
+    @Test
+    @DisplayName("Suma lat wydania")
+    public void averageDate(){
+        double average = bookFunction.averageDate(bookList);
+        Assert.assertEquals(2003.5,average,0.01);
 
     }
 }
