@@ -130,6 +130,13 @@ public class BookFunctionTest {
         Assert.assertEquals("tytul6", sortList.get(5).getTytul());
     }
 
+//    @Test
+//    void splitListTo3Lists() {
+//        List<List<Book>> lists = bookFunction.splitListTo3Lists(bookList);
+//        for (List<Book> sublist:lists);
+//
+//    }
+    
 }
 
 

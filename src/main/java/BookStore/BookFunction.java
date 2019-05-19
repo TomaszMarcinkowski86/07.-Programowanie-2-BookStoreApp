@@ -1,5 +1,7 @@
 package BookStore;
 
+import com.google.common.collect.Lists;
+
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -115,7 +117,11 @@ public class BookFunction {
         return bookList.stream()
                 .sorted(Comparator.comparingInt(Book::getRokWydania).reversed())
                 .collect(Collectors.toList());
+    }
 
+    public List<List<Book>> splitListTo3Lists(List<Book> bookList){
+       List<List<Book>> lists = Lists.partition(bookList,2);
+       return lists;
     }
 
 }
