@@ -31,13 +31,12 @@ public class BookFunction {
 
         Comparator<Book> BookYearComparator = new Comparator<Book>() {
 
-            public int compare(Book year1, Book year2) {
-                String bookYear1 = year1.getRokWydania().toUpperCase();
-                String bookYear2 = year2.getRokWydania().toUpperCase();
+            public int compare(Book ksiazka1, Book ksiazka2) {
 
                 //ascending order
-                return bookYear1.compareTo(bookYear2);
-
+                int bookYear1 = ksiazka1.getRokWydania();
+                int bookYear2 = ksiazka2.getRokWydania();
+                return Integer.compare(bookYear1, bookYear2);
                 //descending order
                 //return bookYear2.compareTo(bookYear1);
             }
@@ -59,20 +58,25 @@ public class BookFunction {
 
     //Stream zmienia mi to na mapę intów i sumuje. To co w mapie Integer.praseInt bo mam stringa
     public int returnSumPublishmentYear(List<Book> bookList) {
-        return bookList.stream().mapToInt(Book -> Integer.parseInt(Book.getRokWydania())).sum();
+        return bookList.stream().mapToInt(Book -> Book.getRokWydania()).sum();
     }
 
     //Stream filtruje ksiązki których data większa od 2007. wcześniej zamieniam na integera a na koniec zliczam
     public long returnNumberBooksAfter2007(List<Book> bookList) {
-        return bookList.stream().filter(ksiazka -> Integer.parseInt(ksiazka.getRokWydania()) > 2007).count();
+        return bookList.stream().filter(ksiazka -> ksiazka.getRokWydania() > 2007).count();
     }
 
     public boolean allAfter2000(List<Book> bookList) {
-        return bookList.stream().allMatch(ksiazka -> Integer.parseInt(ksiazka.getRokWydania()) > 2000);
+        return bookList.stream().allMatch(ksiazka -> ksiazka.getRokWydania() > 2000);
     }
+
     public Double averageDate(List<Book> bookList) {
-        return bookList.stream().mapToInt(ksiazka -> Integer.parseInt(ksiazka.getRokWydania())).average().getAsDouble();
+        return bookList.stream().mapToInt(ksiazka -> ksiazka.getRokWydania()).average().getAsDouble();
 
     }
+    public boolean returnInfoIfAnyBookBefore2003 (List<Book> bookList) {
+       return bookList.stream().filter(ksiazka -> ksiazka.getRokWydania() < 2003).count()>1;
+    }
+
 }
 

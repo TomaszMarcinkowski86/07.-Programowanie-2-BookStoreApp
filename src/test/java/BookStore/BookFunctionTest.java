@@ -19,12 +19,12 @@ public class BookFunctionTest {
     @Before
     public void mojaListaTestowa() {
 
-        bookList.add(new Book("tytul1", "1111111111", "2001"));
-        bookList.add(new Book("tytul2", "2222222222", "2002"));
-        bookList.add(new Book("tytul3", "3333333333", "2003"));
-        bookList.add(new Book("tytul4", "4444444444", "2010"));
-        bookList.add(new Book("tytul5", "5555555555", "2005"));
-        bookList.add(new Book("tytul6", "6666666666", "2000"));
+        bookList.add(new Book("tytul1", 2001, "1111111111"));
+        bookList.add(new Book("tytul2", 2002, "2222222222"));
+        bookList.add(new Book("tytul3", 2003, "3333333333"));
+        bookList.add(new Book("tytul4", 2010, "4444444444"));
+        bookList.add(new Book("tytul5", 2005, "5555555555"));
+        bookList.add(new Book("tytul6", 2000, "6666666666"));
     }
 
     @Test
@@ -45,29 +45,31 @@ public class BookFunctionTest {
 
     @Test
     @DisplayName("Najwcześniej wydana")
-    public  void returErliestYear(){
+    public void returErliestYear() {
         Book book = bookFunction.returnErliestBook(bookList);
-        Assert.assertEquals("tytul6",book.getTytul());
+        Assert.assertEquals("tytul6", book.getTytul());
 
     }
+
     @Test
     @DisplayName("Najpóźniej wydana")
-    public  void returLatestYear(){
+    public void returLatestYear() {
         Book book = bookFunction.returnLatestBook(bookList);
-        Assert.assertEquals("tytul4",book.getTytul());
+        Assert.assertEquals("tytul4", book.getTytul());
     }
+
     @Test
     @DisplayName("Suma lat wydania")
-    public void returnSumPublishmentYear(){
-       int suma = bookFunction.returnSumPublishmentYear(bookList);
-       Assert.assertEquals(12021,suma);
+    public void returnSumPublishmentYear() {
+        int suma = bookFunction.returnSumPublishmentYear(bookList);
+        Assert.assertEquals(12021, suma);
 
     }
 
     @Test
     public void returnNumberBooksAfter2007() {
         long liczbaKsiązekPo2007 = bookFunction.returnNumberBooksAfter2007(bookList);
-        Assert.assertEquals(1,liczbaKsiązekPo2007);
+        Assert.assertEquals(1, liczbaKsiązekPo2007);
     }
 
     @Test
@@ -78,10 +80,17 @@ public class BookFunctionTest {
 
     @Test
     @DisplayName("Suma lat wydania")
-    public void averageDate(){
+    public void averageDate() {
         double average = bookFunction.averageDate(bookList);
-        Assert.assertEquals(2003.5,average,0.01);
+        Assert.assertEquals(2003.5, average, 0.01);
 
+    }
+
+    @Test
+    @DisplayName("czy jakaś książka wydana przed 2003")
+    public void returnInfoIfAnyBookBefore2003() {
+        boolean anyBefore2003 = bookFunction.returnInfoIfAnyBookBefore2003(bookList);
+        Assert.assertTrue(anyBefore2003);
     }
 }
 

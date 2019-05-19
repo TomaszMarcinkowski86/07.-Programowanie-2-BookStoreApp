@@ -16,20 +16,24 @@ public class AddBook {
 
         System.out.println("Podaj  ISBN: ");
         String isbnNumer = scanner.nextLine();
+
         if (isbnNumer.length() != 10 || !StringUtils.isNumeric(isbnNumer)) {
             System.out.println("ISBN musi zawierać 10 cyfr");
             isbnNumer = scanner.nextLine();
         }
         System.out.println("Podaj rok wydania");
-        String rokWydania = scanner.nextLine();
-        if (rokWydania.length() != 4 || !StringUtils.isNumeric(rokWydania)) {
-            System.out.println("Rok wydania powinien mieć format yyyy");
-            rokWydania = scanner.nextLine();
+        int rokWydania = scanner.nextInt();
+        if (rokWydania < 1000 && rokWydania > 2020) {
+            System.out.println("Rok wydania nie mieści się w zakresie 1000-2020");
+            rokWydania = scanner.nextInt();
         }
         Book nowaKsiazka = new Book(tytul, rokWydania, isbnNumer);
         BookList.getBookList().add(nowaKsiazka);
-
     }
+
+
 }
+
+
 
 
