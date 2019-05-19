@@ -1,8 +1,8 @@
 package BookStore;
 
-import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookFunction {
 
@@ -58,24 +58,64 @@ public class BookFunction {
 
     //Stream zmienia mi to na mapę intów i sumuje. To co w mapie Integer.praseInt bo mam stringa
     public int returnSumPublishmentYear(List<Book> bookList) {
-        return bookList.stream().mapToInt(Book -> Book.getRokWydania()).sum();
+        return bookList.stream()
+                .mapToInt(Book -> Book.getRokWydania())
+                .sum();
     }
 
     //Stream filtruje ksiązki których data większa od 2007. wcześniej zamieniam na integera a na koniec zliczam
     public long returnNumberBooksAfter2007(List<Book> bookList) {
-        return bookList.stream().filter(ksiazka -> ksiazka.getRokWydania() > 2007).count();
+        return bookList.stream()
+                .filter(ksiazka -> ksiazka.getRokWydania() > 2007)
+                .count();
     }
 
     public boolean allAfter2000(List<Book> bookList) {
-        return bookList.stream().allMatch(ksiazka -> ksiazka.getRokWydania() > 2000);
+        return bookList.stream()
+                .allMatch(ksiazka -> ksiazka.getRokWydania() > 2000);
     }
 
     public Double averageDate(List<Book> bookList) {
-        return bookList.stream().mapToInt(ksiazka -> ksiazka.getRokWydania()).average().getAsDouble();
+        return bookList.stream()
+                .mapToInt(ksiazka -> ksiazka.getRokWydania())
+                .average()
+                .getAsDouble();
 
     }
     public boolean returnInfoIfAnyBookBefore2003 (List<Book> bookList) {
-       return bookList.stream().filter(ksiazka -> ksiazka.getRokWydania() < 2003).count()>1;
+       return bookList.stream()
+               .filter(ksiazka -> ksiazka.getRokWydania() < 2003)
+               .count()>1;
+    }
+
+    public List<Book> returnBookStartCAndAfter2007 (List<Book> bookList){
+       return bookList.stream().filter(ksiazka->ksiazka.getRokWydania()>2007)
+                .filter(ksiazka->ksiazka.getTytul().startsWith("C"))
+                .collect(Collectors.toList());
+    }
+
+    public List<Book> returnBookIfYearDivide2 (List<Book> bookList) {
+        return bookList.stream()
+                .filter(ksiazka->ksiazka.getRokWydania()%2==0)
+                .collect(Collectors.toList());
+    }
+
+    public Map<String, Book> returnMap (List<Book> bookList){
+        return bookList.stream()
+                .collect(Collectors.toMap(x->x.getIsbnNumer(),x->x));
+    }
+
+    public List<Book> sortBookDateLast(List<Book> bookList){
+        return bookList.stream()
+                .sorted(Comparator.comparingInt(Book::getRokWydania))
+                .collect(Collectors.toList());
+
+    }
+    public List<Book> sortBookDateFirst(List<Book> bookList){
+        return bookList.stream()
+                .sorted(Comparator.comparingInt(Book::getRokWydania).reversed())
+                .collect(Collectors.toList());
+
     }
 
 }

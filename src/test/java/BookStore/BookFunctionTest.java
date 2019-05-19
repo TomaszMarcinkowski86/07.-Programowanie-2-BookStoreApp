@@ -1,14 +1,17 @@
 package BookStore;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.hamcrest.collection.IsMapContaining;
 
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BookFunctionTest {
 
@@ -22,7 +25,7 @@ public class BookFunctionTest {
         bookList.add(new Book("tytul1", 2001, "1111111111"));
         bookList.add(new Book("tytul2", 2002, "2222222222"));
         bookList.add(new Book("tytul3", 2003, "3333333333"));
-        bookList.add(new Book("tytul4", 2010, "4444444444"));
+        bookList.add(new Book("Cytul4", 2010, "4444444444"));
         bookList.add(new Book("tytul5", 2005, "5555555555"));
         bookList.add(new Book("tytul6", 2000, "6666666666"));
     }
@@ -92,6 +95,42 @@ public class BookFunctionTest {
         boolean anyBefore2003 = bookFunction.returnInfoIfAnyBookBefore2003(bookList);
         Assert.assertTrue(anyBefore2003);
     }
+
+    @Test
+    public void returnBookStartCAndAfter2007() {
+        List<Book> listAfterSort = bookFunction.returnBookStartCAndAfter2007(bookList);
+        Assert.assertEquals("Cytul4", listAfterSort.get(0).getTytul());
+    }
+
+    @Test
+    public void returnBookIfYearDivide2() {
+        List<Book> listAfterSort2 = bookFunction.returnBookIfYearDivide2(bookList);
+        Assert.assertEquals("tytul2", listAfterSort2.get(0).getTytul());
+        Assert.assertEquals("Cytul4", listAfterSort2.get(1).getTytul());
+        Assert.assertEquals("tytul6", listAfterSort2.get(2).getTytul());
+    }
+
+    @Test
+    public void returnMap() {
+        Map<String, Book> map = bookFunction.returnMap(bookList);
+        Assert.assertThat(map, IsMapContaining.hasEntry("1111111111", bookList.get(0)));
+//        Assertions.assertThat(map).containsEntry("1111111111", bookList.get(0)))
+
+    }
+
+    @Test
+    public void sortBookDateLast() {
+        List<Book> sortList = bookFunction.sortBookDateLast(bookList);
+        Assert.assertEquals("tytul6", sortList.get(0).getTytul());
+    }
+
+    @Test
+    public void sortBookDateFirst() {
+        List<Book> sortList = bookFunction.sortBookDateFirst(bookList);
+        Assert.assertEquals("tytul6", sortList.get(5).getTytul());
+    }
+
 }
+
 
 
