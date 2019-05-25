@@ -8,7 +8,7 @@ public class LoadFile {
 
 
     static List<Book> loadFile() throws FileNotFoundException {
-        String path = "D:/JAVA/Programowanie2/src/main/resources/books.csv";
+        String path = "E:/JAVA/Programowanie2/src/main/resources/books.csv";
         File bookListFile = new File(path);
 
         try (BufferedReader br = new BufferedReader(new FileReader(bookListFile))) {

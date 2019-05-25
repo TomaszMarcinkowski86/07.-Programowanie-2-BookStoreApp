@@ -17,13 +17,13 @@ public class AddBook {
         System.out.println("Podaj  ISBN: ");
         String isbnNumer = scanner.nextLine();
 
-        if (isbnNumer.length() != 10 || !StringUtils.isNumeric(isbnNumer)) {
+        while (isbnNumer.length() != 10 || !StringUtils.isNumeric(isbnNumer)) {
             System.out.println("ISBN musi zawierać 10 cyfr");
             isbnNumer = scanner.nextLine();
         }
         System.out.println("Podaj rok wydania");
         int rokWydania = scanner.nextInt();
-        if (rokWydania < 1000 && rokWydania > 2020) {
+        while(rokWydania < 1000 || rokWydania > 2020) {
             System.out.println("Rok wydania nie mieści się w zakresie 1000-2020");
             rokWydania = scanner.nextInt();
         }
