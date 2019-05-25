@@ -84,45 +84,58 @@ public class BookFunction {
                 .getAsDouble();
 
     }
-    public boolean returnInfoIfAnyBookBefore2003 (List<Book> bookList) {
-       return bookList.stream()
-               .filter(ksiazka -> ksiazka.getRokWydania() < 2003)
-               .count()>1;
+
+    public boolean returnInfoIfAnyBookBefore2003(List<Book> bookList) {
+        return bookList.stream()
+                .filter(ksiazka -> ksiazka.getRokWydania() < 2003)
+                .count() > 1;
     }
 
-    public List<Book> returnBookStartCAndAfter2007 (List<Book> bookList){
-       return bookList.stream().filter(ksiazka->ksiazka.getRokWydania()>2007)
-                .filter(ksiazka->ksiazka.getTytul().startsWith("C"))
+    public List<Book> returnBookStartCAndAfter2007(List<Book> bookList) {
+        return bookList.stream().filter(ksiazka -> ksiazka.getRokWydania() > 2007)
+                .filter(ksiazka -> ksiazka.getTytul().startsWith("C"))
                 .collect(Collectors.toList());
     }
 
-    public List<Book> returnBookIfYearDivide2 (List<Book> bookList) {
+    public List<Book> returnBookIfYearDivide2(List<Book> bookList) {
         return bookList.stream()
-                .filter(ksiazka->ksiazka.getRokWydania()%2==0)
+                .filter(ksiazka -> ksiazka.getRokWydania() % 2 == 0)
                 .collect(Collectors.toList());
     }
 
-    public Map<String, Book> returnMap (List<Book> bookList){
+    public Map<String, Book> returnMap(List<Book> bookList) {
         return bookList.stream()
-                .collect(Collectors.toMap(x->x.getIsbnNumer(),x->x));
+                .collect(Collectors.toMap(x -> x.getIsbnNumer(), x -> x));
     }
 
-    public List<Book> sortBookDateLast(List<Book> bookList){
+    public List<Book> sortBookDateLast(List<Book> bookList) {
         return bookList.stream()
                 .sorted(Comparator.comparingInt(Book::getRokWydania))
                 .collect(Collectors.toList());
 
     }
-    public List<Book> sortBookDateFirst(List<Book> bookList){
+
+    public List<Book> sortBookDateFirst(List<Book> bookList) {
         return bookList.stream()
                 .sorted(Comparator.comparingInt(Book::getRokWydania).reversed())
                 .collect(Collectors.toList());
     }
 
-    public List<List<Book>> splitListTo3Lists(List<Book> bookList){
-       List<List<Book>> lists = Lists.partition(bookList,2);
-       return lists;
+    public List<List<Book>> splitListTo3Lists(List<Book> bookList) {
+        List<List<Book>> lists = Lists.partition(bookList, 2);
+        return lists;
+    }
+//Pogrupuj książki po roku wydania. Metoda powinna zwrócić Map<Integer, List<Book>>
+// gdzie kluczem jest rok wydania a wartością lista książek wydana w tym roku. (*)
+
+    public Map<Integer, List<Book>> bookYearSorted(List<Book> booklist) {
+        return booklist.stream().collect(Collectors.groupingBy(year -> (year.getRokWydania())));
     }
 
+    //    Podziel książki na te wydane po 2009 roku i pozostałe. Metoda powinna zwrócić Map<Boolean, List<Book>>
+    //    gdzie kluczem jest boolean oznaczający czy została wydana po 2009 a wartością będą listy książek. (*)
+    public Map<Boolean, List<Book>> bookAfter2009YearSorted(List<Book> booklist) {
+        return booklist.stream().collect(Collectors.groupingBy(year -> (year.getRokWydania() > 2009)));
+    }
 }
 

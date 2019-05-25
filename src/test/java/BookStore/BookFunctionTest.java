@@ -9,9 +9,7 @@ import org.hamcrest.collection.IsMapContaining;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BookFunctionTest {
 
@@ -26,7 +24,7 @@ public class BookFunctionTest {
         bookList.add(new Book("tytul2", 2002, "2222222222"));
         bookList.add(new Book("tytul3", 2003, "3333333333"));
         bookList.add(new Book("Cytul4", 2010, "4444444444"));
-        bookList.add(new Book("tytul5", 2005, "5555555555"));
+        bookList.add(new Book("tytul5", 2000, "5555555555"));
         bookList.add(new Book("tytul6", 2000, "6666666666"));
     }
 
@@ -130,14 +128,56 @@ public class BookFunctionTest {
         Assert.assertEquals("tytul6", sortList.get(5).getTytul());
     }
 
-//    @Test
-//    void splitListTo3Lists() {
-//        List<List<Book>> lists = bookFunction.splitListTo3Lists(bookList);
-//        for (List<Book> sublist:lists);
-//
-//    }
-    
+    @Test
+    public void splitListTo3Lists() {
+        List<List<Book>> lists = bookFunction.splitListTo3Lists(bookList);
+        for (List<Book> sublist : lists) ;
+    }
+
+    @Test
+    public void bookYearSorted() {
+        Map<Integer, List<Book>> mapOfBookSortedYear = bookFunction.bookYearSorted(bookList);
+        List<Book> list2000 = new ArrayList<>();
+        list2000.add(bookList.get(4));
+        list2000.add(bookList.get(5));
+        List<Book> list2001 = new ArrayList<>();
+        list2001.add(bookList.get(0));
+        List<Book> list2002 = new ArrayList<>();
+        list2002.add(bookList.get(1));
+        List<Book> list2003 = new ArrayList<>();
+        list2003.add(bookList.get(2));
+        List<Book> list2010 = new ArrayList<>();
+        list2010.add(bookList.get(3));
+        Map<Integer, List<Book>> mapToTest = new HashMap<>();
+        mapToTest.put(2000, list2000);
+        mapToTest.put(2001, list2001);
+        mapToTest.put(2002, list2002);
+        mapToTest.put(2003, list2003);
+        mapToTest.put(2010, list2010);
+        Assert.assertEquals(mapToTest, mapOfBookSortedYear);
+
+    }
+
+    @Test
+    public void bookafter2009YearSorted() {
+        Map<Boolean, List<Book>> mapOfBookSortedAfter2009Year = bookFunction.bookAfter2009YearSorted(bookList);
+        List<Book> listFalse = new ArrayList<>();
+        listFalse.add(bookList.get(0));
+        listFalse.add(bookList.get(1));
+        listFalse.add(bookList.get(2));
+        listFalse.add(bookList.get(4));
+        listFalse.add(bookList.get(5));
+        List<Book> listTrue = new ArrayList<>();
+        listTrue.add(bookList.get(3));
+        Map<Boolean, List<Book>> mapToTest = new HashMap<>();
+        mapToTest.put(false, listFalse);
+        mapToTest.put(true, listTrue);
+        Assert.assertEquals(mapToTest, mapOfBookSortedAfter2009Year);
+
+    }
 }
+
+
 
 
 
