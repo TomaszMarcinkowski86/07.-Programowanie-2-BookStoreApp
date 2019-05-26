@@ -14,7 +14,7 @@ public class SaveBookListToFile {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(path)))) {
 
             for (Book line : bookList) {
-                String lineToWrite = line.getTitle() + "; " + line.yearOfPublishment() + "; " + line.getIsbnNumber();
+                String lineToWrite = line.getTitle() + "; " + line.getYearOfPublishment() + "; " + line.getIsbnNumber();
                 bw.write(lineToWrite + ":" + "\n");
             }
             bw.close();

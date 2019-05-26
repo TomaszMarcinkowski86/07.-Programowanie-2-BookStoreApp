@@ -19,19 +19,19 @@ public class BooksFunctionTest {
     @Before
     public void mojaListaTestowa() {
 
-        bookList.add(new Book("tytul1", 2001, "1111111111"));
-        bookList.add(new Book("tytul2", 2002, "2222222222"));
-        bookList.add(new Book("tytul3", 2003, "3333333333"));
-        bookList.add(new Book("Cytul4", 2010, "4444444444"));
-        bookList.add(new Book("tytul5", 2000, "5555555555"));
-        bookList.add(new Book("tytul6", 2000, "6666666666"));
+        bookList.add(new Book("tytul1", 2001, 1111111111L));
+        bookList.add(new Book("tytul2", 2002, 2222222222L));
+        bookList.add(new Book("tytul3", 2003, 3333333333L));
+        bookList.add(new Book("Cytul4", 2010, 4444444444L));
+        bookList.add(new Book("tytul5", 2000, 5555555555L));
+        bookList.add(new Book("tytul6", 2000, 6666666666L));
     }
 
     @Test
     @DisplayName("Tytuł po ISBN")
     public void checkReturnBookIsbn() {
 
-        Book book = booksFunction.findISBN("6666666666", bookList);
+        Book book = booksFunction.findISBN(6666666666L, bookList);
         Assert.assertEquals("tytul6", book.getTitle());
     }
 

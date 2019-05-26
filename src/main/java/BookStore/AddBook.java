@@ -15,11 +15,11 @@ public class AddBook {
         String title = scanner.nextLine();
 
         System.out.println("Podaj  ISBN: ");
-        String isbnNumber = scanner.nextLine();
+        Long isbnNumber = scanner.nextLong();
 
-        while (isbnNumber.length() != 10 || !StringUtils.isNumeric(isbnNumber)) {
+        while (isbnNumber.toString().length() != 10 ) {
             System.out.println("ISBN musi zawierać 10 cyfr");
-            isbnNumber = scanner.nextLine();
+            isbnNumber = scanner.nextLong();
         }
         System.out.println("Podaj rok wydania");
         int yearOfPublishment = scanner.nextInt();
@@ -27,6 +27,7 @@ public class AddBook {
             System.out.println("Rok wydania nie mieści się w zakresie 1000-2020");
             yearOfPublishment = scanner.nextInt();
         }
+
         Book newBook = new Book(title, yearOfPublishment, isbnNumber);
         BookList.getBookList().add(newBook);
     }

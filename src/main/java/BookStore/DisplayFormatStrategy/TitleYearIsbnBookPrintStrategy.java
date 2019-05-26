@@ -11,7 +11,7 @@ public class TitleYearIsbnBookPrintStrategy implements BookPrintStrategy {
         for (Book book : bookList) {
             System.out.println
                     (book.getTitle() + " " +
-                            book.yearOfPublishment() + " " +
+                            book.getYearOfPublishment() + " " +
                             book.getIsbnNumber());
         }
 
