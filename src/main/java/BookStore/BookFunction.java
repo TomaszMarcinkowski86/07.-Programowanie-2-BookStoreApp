@@ -12,7 +12,7 @@ public class BookFunction {
     public Book findISBN(String isbn, List<Book> booklist) {
 
         for (Book book : booklist) {
-            if (book.getIsbnNumer().equals(isbn)) {
+            if (book.getIsbnNumber().equals(isbn)) {
                 return book;
             }
         }
@@ -36,8 +36,8 @@ public class BookFunction {
             public int compare(Book ksiazka1, Book ksiazka2) {
 
                 //ascending order
-                int bookYear1 = ksiazka1.getRokWydania();
-                int bookYear2 = ksiazka2.getRokWydania();
+                int bookYear1 = ksiazka1.yearOfPublishment();
+                int bookYear2 = ksiazka2.yearOfPublishment();
                 return Integer.compare(bookYear1, bookYear2);
                 //descending order
                 //return bookYear2.compareTo(bookYear1);
@@ -61,25 +61,25 @@ public class BookFunction {
     //Stream zmienia mi to na mapę intów i sumuje. To co w mapie Integer.praseInt bo mam stringa
     public int returnSumPublishmentYear(List<Book> bookList) {
         return bookList.stream()
-                .mapToInt(Book -> Book.getRokWydania())
+                .mapToInt(Book -> Book.yearOfPublishment())
                 .sum();
     }
 
     //Stream filtruje ksiązki których data większa od 2007. wcześniej zamieniam na integera a na koniec zliczam
     public static long returnNumberBooksAfter2007(List<Book> bookList) {
         return bookList.stream()
-                .filter(ksiazka -> ksiazka.getRokWydania() > 2007)
+                .filter(ksiazka -> ksiazka.yearOfPublishment() > 2007)
                 .count();
     }
 
     public boolean allAfter2000(List<Book> bookList) {
         return bookList.stream()
-                .allMatch(ksiazka -> ksiazka.getRokWydania() > 2000);
+                .allMatch(ksiazka -> ksiazka.yearOfPublishment() > 2000);
     }
 
     public Double averageDate(List<Book> bookList) {
         return bookList.stream()
-                .mapToInt(ksiazka -> ksiazka.getRokWydania())
+                .mapToInt(ksiazka -> ksiazka.yearOfPublishment())
                 .average()
                 .getAsDouble();
 
@@ -87,37 +87,37 @@ public class BookFunction {
 
     public boolean returnInfoIfAnyBookBefore2003(List<Book> bookList) {
         return bookList.stream()
-                .filter(ksiazka -> ksiazka.getRokWydania() < 2003)
+                .filter(ksiazka -> ksiazka.yearOfPublishment() < 2003)
                 .count() > 1;
     }
 
     public List<Book> returnBookStartCAndAfter2007(List<Book> bookList) {
-        return bookList.stream().filter(ksiazka -> ksiazka.getRokWydania() > 2007)
-                .filter(ksiazka -> ksiazka.getTytul().startsWith("C"))
+        return bookList.stream().filter(ksiazka -> ksiazka.yearOfPublishment() > 2007)
+                .filter(ksiazka -> ksiazka.getTitle().startsWith("C"))
                 .collect(Collectors.toList());
     }
 
     public List<Book> returnBookIfYearDivide2(List<Book> bookList) {
         return bookList.stream()
-                .filter(ksiazka -> ksiazka.getRokWydania() % 2 == 0)
+                .filter(ksiazka -> ksiazka.yearOfPublishment() % 2 == 0)
                 .collect(Collectors.toList());
     }
 
     public Map<String, Book> returnMap(List<Book> bookList) {
         return bookList.stream()
-                .collect(Collectors.toMap(x -> x.getIsbnNumer(), x -> x));
+                .collect(Collectors.toMap(x -> x.getIsbnNumber(), x -> x));
     }
 
     public static List<Book> sortBookDateLast(List<Book> bookList) {
         return bookList.stream()
-                .sorted(Comparator.comparingInt(Book::getRokWydania))
+                .sorted(Comparator.comparingInt(Book::yearOfPublishment))
                 .collect(Collectors.toList());
 
     }
 
     public static List<Book> sortBookDateFirst(List<Book> bookList) {
         return bookList.stream()
-                .sorted(Comparator.comparingInt(Book::getRokWydania).reversed())
+                .sorted(Comparator.comparingInt(Book::yearOfPublishment).reversed())
                 .collect(Collectors.toList());
     }
 
@@ -129,13 +129,13 @@ public class BookFunction {
 // gdzie kluczem jest rok wydania a wartością lista książek wydana w tym roku. (*)
 
     public Map<Integer, List<Book>> bookYearSorted(List<Book> booklist) {
-        return booklist.stream().collect(Collectors.groupingBy(year -> (year.getRokWydania())));
+        return booklist.stream().collect(Collectors.groupingBy(year -> (year.yearOfPublishment())));
     }
 
     //    Podziel książki na te wydane po 2009 roku i pozostałe. Metoda powinna zwrócić Map<Boolean, List<Book>>
     //    gdzie kluczem jest boolean oznaczający czy została wydana po 2009 a wartością będą listy książek. (*)
     public Map<Boolean, List<Book>> bookAfter2009YearSorted(List<Book> booklist) {
-        return booklist.stream().collect(Collectors.groupingBy(year -> (year.getRokWydania() > 2009)));
+        return booklist.stream().collect(Collectors.groupingBy(year -> (year.yearOfPublishment() > 2009)));
     }
 }
 

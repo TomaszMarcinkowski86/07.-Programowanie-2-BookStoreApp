@@ -1,5 +1,12 @@
 package BookStore;
 
+import BookStore.DisplayFormatStrategy.BookPrintStrategy;
+import BookStore.DisplayFormatStrategy.IsbnYearTitleBookPrintStrategy;
+import BookStore.DisplayFormatStrategy.TitleYearIsbnBookPrintStrategy;
+import BookStore.DisplayFormatStrategy.YearTitleIsbnBookPrintStrategy;
+import BookStore.Modifications.DeleteBook;
+import BookStore.Modifications.EditYear;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +19,7 @@ public class BookStore {
 
     static {
         try {
-            bookList = LoadFile.loadFile();
+            bookList = LoadBookFile.loadFile();
         } catch (FileNotFoundException e) {
             System.out.println("Nie znaleziono pliku");
         }
@@ -48,7 +55,7 @@ public class BookStore {
                 case 2:
                     AddBook.addBook();
                     System.out.println("Dodałeś nową książkę: ");
-                    System.out.println("Co chcesz zrobić dalej? ");
+                    whatNext("Co chcesz zrobić dalej? ");
                     break;
                 case 3:
                     DeleteBook.deleteBook();
@@ -94,6 +101,10 @@ public class BookStore {
             }
         } while (choose != 9);
 
+    }
+
+    private static void whatNext(String s) {
+        System.out.println(s);
     }
 
 }

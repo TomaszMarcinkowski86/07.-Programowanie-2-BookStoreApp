@@ -1,4 +1,6 @@
-package BookStore;
+package BookStore.DisplayFormatStrategy;
+
+import BookStore.Book;
 
 import java.util.List;
 
@@ -8,9 +10,9 @@ public class IsbnYearTitleBookPrintStrategy implements BookPrintStrategy {
     public void print(List<Book> bookList) {
         for (Book book : bookList) {
             System.out.println
-                    (book.getIsbnNumer() + " " +
-                            book.getRokWydania() + " " +
-                            book.getTytul()
+                    (book.getIsbnNumber() + " " +
+                            book.yearOfPublishment() + " " +
+                            book.getTitle()
                     );
         }
 

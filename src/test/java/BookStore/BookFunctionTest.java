@@ -1,6 +1,5 @@
 package BookStore;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +32,7 @@ public class BookFunctionTest {
     public void checkReturnBookIsbn() {
 
         Book book = bookFunction.findISBN("6666666666", bookList);
-        Assert.assertEquals("tytul6", book.getTytul());
+        Assert.assertEquals("tytul6", book.getTitle());
     }
 
     @Test
@@ -48,7 +47,7 @@ public class BookFunctionTest {
     @DisplayName("Najwcześniej wydana")
     public void returErliestYear() {
         Book book = bookFunction.returnErliestBook(bookList);
-        Assert.assertEquals("tytul6", book.getTytul());
+        Assert.assertEquals("tytul6", book.getTitle());
 
     }
 
@@ -56,7 +55,7 @@ public class BookFunctionTest {
     @DisplayName("Najpóźniej wydana")
     public void returLatestYear() {
         Book book = bookFunction.returnLatestBook(bookList);
-        Assert.assertEquals("tytul4", book.getTytul());
+        Assert.assertEquals("tytul4", book.getTitle());
     }
 
     @Test
@@ -97,15 +96,15 @@ public class BookFunctionTest {
     @Test
     public void returnBookStartCAndAfter2007() {
         List<Book> listAfterSort = bookFunction.returnBookStartCAndAfter2007(bookList);
-        Assert.assertEquals("Cytul4", listAfterSort.get(0).getTytul());
+        Assert.assertEquals("Cytul4", listAfterSort.get(0).getTitle());
     }
 
     @Test
     public void returnBookIfYearDivide2() {
         List<Book> listAfterSort2 = bookFunction.returnBookIfYearDivide2(bookList);
-        Assert.assertEquals("tytul2", listAfterSort2.get(0).getTytul());
-        Assert.assertEquals("Cytul4", listAfterSort2.get(1).getTytul());
-        Assert.assertEquals("tytul6", listAfterSort2.get(2).getTytul());
+        Assert.assertEquals("tytul2", listAfterSort2.get(0).getTitle());
+        Assert.assertEquals("Cytul4", listAfterSort2.get(1).getTitle());
+        Assert.assertEquals("tytul6", listAfterSort2.get(2).getTitle());
     }
 
     @Test
@@ -119,15 +118,15 @@ public class BookFunctionTest {
     @Test
     public void sortBookDateLast() {
         List<Book> sortList = bookFunction.sortBookDateLast(bookList);
-        Assert.assertEquals("tytul5", sortList.get(0).getTytul());
-        Assert.assertEquals("tytul6", sortList.get(1).getTytul());
-        Assert.assertEquals("Cytul4", sortList.get(5).getTytul());
+        Assert.assertEquals("tytul5", sortList.get(0).getTitle());
+        Assert.assertEquals("tytul6", sortList.get(1).getTitle());
+        Assert.assertEquals("Cytul4", sortList.get(5).getTitle());
     }
 
     @Test
     public void sortBookDateFirst() {
         List<Book> sortList = bookFunction.sortBookDateFirst(bookList);
-        Assert.assertEquals("tytul6", sortList.get(5).getTytul());
+        Assert.assertEquals("tytul6", sortList.get(5).getTitle());
     }
 
     @Test
