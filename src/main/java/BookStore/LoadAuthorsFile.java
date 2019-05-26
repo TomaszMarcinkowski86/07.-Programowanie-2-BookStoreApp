@@ -6,7 +6,7 @@ import java.util.List;
 public class LoadAuthorsFile {
 
 
-    static List<Book> loadFile() throws FileNotFoundException {
+    static List<Author> loadFile() throws FileNotFoundException {
         String path = "E:/JAVA/Programowanie2/src/main/resources/authors.csv";
         File authorsListFile = new File(path);
 
@@ -16,14 +16,14 @@ public class LoadAuthorsFile {
             while (linia != null) {
 
                 String[] slowo = linia.split(";");
-                Book ksiazka = new Book(slowo[0], Integer.parseInt(slowo[2]), slowo[1]);
-                BookList.getBookList().add(ksiazka);
+                Author author = new Author(Integer.parseInt(slowo[0]), slowo[1], Integer.parseInt(slowo[2]));
+                AuthorList.getAuthorList().add(author);
                 linia = br.readLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
 
         }
-        return BookList.getBookList();
+        return AuthorList.getAuthorList();
     }
 }

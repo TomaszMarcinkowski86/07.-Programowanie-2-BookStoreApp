@@ -10,10 +10,10 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.*;
 
-public class BookFunctionTest {
+public class BooksFunctionTest {
 
     List<Book> bookList = new ArrayList<Book>();
-    BookFunction bookFunction = new BookFunction();
+    BooksFunction booksFunction = new BooksFunction();
 
     //to będzie wywoływane przed każdym testem
     @Before
@@ -31,7 +31,7 @@ public class BookFunctionTest {
     @DisplayName("Tytuł po ISBN")
     public void checkReturnBookIsbn() {
 
-        Book book = bookFunction.findISBN("6666666666", bookList);
+        Book book = booksFunction.findISBN("6666666666", bookList);
         Assert.assertEquals("tytul6", book.getTitle());
     }
 
@@ -40,76 +40,77 @@ public class BookFunctionTest {
     public void reurnTwoLast() {
 
         //AsertJ biblioteki do obsługi kolekcji
-        assertThat(bookFunction.reurnTwoLast(bookList)).contains(bookList.get(4)).contains(bookList.get(5));
+        assertThat(booksFunction.reurnTwoLast(bookList)).contains(bookList.get(4)).contains(bookList.get(5));
     }
 
     @Test
     @DisplayName("Najwcześniej wydana")
     public void returErliestYear() {
-        Book book = bookFunction.returnErliestBook(bookList);
-        Assert.assertEquals("tytul6", book.getTitle());
+        Book book = booksFunction.returnErliestBook(bookList);
+        Assert.assertEquals("tytul5", book.getTitle());
 
     }
 
     @Test
     @DisplayName("Najpóźniej wydana")
     public void returLatestYear() {
-        Book book = bookFunction.returnLatestBook(bookList);
-        Assert.assertEquals("tytul4", book.getTitle());
+        Book book = booksFunction.returnLatestBook(bookList);
+        Assert.assertEquals("Cytul4", book.getTitle());
     }
 
     @Test
     @DisplayName("Suma lat wydania")
     public void returnSumPublishmentYear() {
-        int suma = bookFunction.returnSumPublishmentYear(bookList);
-        Assert.assertEquals(12021, suma);
+        int suma = booksFunction.returnSumPublishmentYear(bookList);
+        Assert.assertEquals(12016, suma);
 
     }
 
     @Test
     public void returnNumberBooksAfter2007() {
-        long liczbaKsiązekPo2007 = bookFunction.returnNumberBooksAfter2007(bookList);
+        long liczbaKsiązekPo2007 = booksFunction.returnNumberBooksAfter2007(bookList);
         Assert.assertEquals(1, liczbaKsiązekPo2007);
     }
 
     @Test
     public void allAfter2000() {
-        boolean allAfter2000 = bookFunction.allAfter2000(bookList);
+        boolean allAfter2000 = booksFunction.allAfter2000(bookList);
         Assert.assertFalse(allAfter2000);
     }
 
     @Test
     @DisplayName("Suma lat wydania")
     public void averageDate() {
-        double average = bookFunction.averageDate(bookList);
-        Assert.assertEquals(2003.5, average, 0.01);
+        double average = booksFunction.averageDate(bookList);
+        Assert.assertEquals(2002.66, average, 0.01);
 
     }
 
     @Test
     @DisplayName("czy jakaś książka wydana przed 2003")
     public void returnInfoIfAnyBookBefore2003() {
-        boolean anyBefore2003 = bookFunction.returnInfoIfAnyBookBefore2003(bookList);
+        boolean anyBefore2003 = booksFunction.returnInfoIfAnyBookBefore2003(bookList);
         Assert.assertTrue(anyBefore2003);
     }
 
     @Test
     public void returnBookStartCAndAfter2007() {
-        List<Book> listAfterSort = bookFunction.returnBookStartCAndAfter2007(bookList);
+        List<Book> listAfterSort = booksFunction.returnBookStartCAndAfter2007(bookList);
         Assert.assertEquals("Cytul4", listAfterSort.get(0).getTitle());
     }
 
     @Test
     public void returnBookIfYearDivide2() {
-        List<Book> listAfterSort2 = bookFunction.returnBookIfYearDivide2(bookList);
+        List<Book> listAfterSort2 = booksFunction.returnBookIfYearDivide2(bookList);
         Assert.assertEquals("tytul2", listAfterSort2.get(0).getTitle());
         Assert.assertEquals("Cytul4", listAfterSort2.get(1).getTitle());
-        Assert.assertEquals("tytul6", listAfterSort2.get(2).getTitle());
+        Assert.assertEquals("tytul5", listAfterSort2.get(2).getTitle());
+        Assert.assertEquals("tytul6", listAfterSort2.get(3).getTitle());
     }
 
     @Test
     public void returnMap() {
-        Map<String, Book> map = bookFunction.returnMap(bookList);
+        Map<String, Book> map = booksFunction.returnMap(bookList);
         Assert.assertThat(map, IsMapContaining.hasEntry("1111111111", bookList.get(0)));
 //        Assertions.assertThat(map).containsEntry("1111111111", bookList.get(0)))
 
@@ -117,7 +118,7 @@ public class BookFunctionTest {
 
     @Test
     public void sortBookDateLast() {
-        List<Book> sortList = bookFunction.sortBookDateLast(bookList);
+        List<Book> sortList = booksFunction.sortBookDateLast(bookList);
         Assert.assertEquals("tytul5", sortList.get(0).getTitle());
         Assert.assertEquals("tytul6", sortList.get(1).getTitle());
         Assert.assertEquals("Cytul4", sortList.get(5).getTitle());
@@ -125,19 +126,19 @@ public class BookFunctionTest {
 
     @Test
     public void sortBookDateFirst() {
-        List<Book> sortList = bookFunction.sortBookDateFirst(bookList);
+        List<Book> sortList = booksFunction.sortBookDateFirst(bookList);
         Assert.assertEquals("tytul6", sortList.get(5).getTitle());
     }
 
     @Test
     public void splitListTo3Lists() {
-        List<List<Book>> lists = bookFunction.splitListTo3Lists(bookList);
+        List<List<Book>> lists = booksFunction.splitListTo3Lists(bookList);
         for (List<Book> sublist : lists) ;
     }
 
     @Test
     public void bookYearSorted() {
-        Map<Integer, List<Book>> mapOfBookSortedYear = bookFunction.bookYearSorted(bookList);
+        Map<Integer, List<Book>> mapOfBookSortedYear = booksFunction.bookYearSorted(bookList);
         List<Book> list2000 = new ArrayList<>();
         list2000.add(bookList.get(4));
         list2000.add(bookList.get(5));
@@ -161,7 +162,7 @@ public class BookFunctionTest {
 
     @Test
     public void bookafter2009YearSorted() {
-        Map<Boolean, List<Book>> mapOfBookSortedAfter2009Year = bookFunction.bookAfter2009YearSorted(bookList);
+        Map<Boolean, List<Book>> mapOfBookSortedAfter2009Year = booksFunction.bookAfter2009YearSorted(bookList);
         List<Book> listFalse = new ArrayList<>();
         listFalse.add(bookList.get(0));
         listFalse.add(bookList.get(1));

@@ -1,3 +1,5 @@
+package Dodatkowe;
+
 public class ReplaceTwoIntWithoutTempInt {
 
     public static void main(String[] args) {

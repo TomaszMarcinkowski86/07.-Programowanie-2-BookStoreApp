@@ -4,7 +4,11 @@ public class Book {
     private String title;
     private String isbnNumber;
     private int yearOfPublishment;
-    private  String authorName;
+    private int bookID;
+    private  Author author;
+    private  Category category;
+
+
 
     public Book(String title,int yearOfPublishment, String isbnNumber) {
         this.title = title;

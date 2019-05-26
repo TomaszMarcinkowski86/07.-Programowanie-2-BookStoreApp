@@ -71,15 +71,15 @@ public class BookStore {
                     break;
                 case 6:
                     System.out.println("Posortowano po dacie rosnąco");
-                    bookPrintStrategy.print(BookFunction.sortBookDateLast(bookList));
+                    bookPrintStrategy.print(BooksFunction.sortBookDateLast(bookList));
                     break;
                 case 7:
                     System.out.println("Posortowano po dacie malejąco");
-                    bookPrintStrategy.print(BookFunction.sortBookDateFirst(bookList));
+                    bookPrintStrategy.print(BooksFunction.sortBookDateFirst(bookList));
                     break;
                 case 8:
                     System.out.println("Liczba Ksiażek wydanych po 2007:" + " "
-                            + BookFunction.returnNumberBooksAfter2007(bookList));
+                            + BooksFunction.returnNumberBooksAfter2007(bookList));
                     break;
                 case 9:
                     System.out.println("Zapraszamy ponownie");

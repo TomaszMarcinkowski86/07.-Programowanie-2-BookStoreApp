@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BookFunction {
+public class BooksFunction {
 
     // W pętli sprawdzam czy podany isbn jest równy z isbn Booka jak jest to go zwracam
     public Book findISBN(String isbn, List<Book> booklist) {
