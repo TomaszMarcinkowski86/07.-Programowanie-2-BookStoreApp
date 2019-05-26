@@ -119,7 +119,9 @@ public class BookFunctionTest {
     @Test
     public void sortBookDateLast() {
         List<Book> sortList = bookFunction.sortBookDateLast(bookList);
-        Assert.assertEquals("tytul6", sortList.get(0).getTytul());
+        Assert.assertEquals("tytul5", sortList.get(0).getTytul());
+        Assert.assertEquals("tytul6", sortList.get(1).getTytul());
+        Assert.assertEquals("Cytul4", sortList.get(5).getTytul());
     }
 
     @Test

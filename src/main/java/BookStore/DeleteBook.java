@@ -13,10 +13,8 @@ public class DeleteBook {
         String tylkoTytul = BookList.getBookList().stream().map(book -> book.getTytul()).collect(Collectors.joining("; "));
         System.out.println("Podaj tytuł ksiązki do usunięcia: " + tylkoTytul);
         String tytul = scanner.nextLine();
-        while (!checkIfBookIsInList(BookList.getBookList(), tytul)) {
-            System.out.println("Nieprawidłowy tytuł!!");
-            tytul = scanner.nextLine();
-        }
+        Warnings warnings=new Warnings();
+        tytul = warnings.titleWarning(scanner, tytul);
         int indeks = 0;
         for (Book book : BookList.getBookList()) {
             if (book.getTytul().equals(tytul)) {
@@ -26,8 +24,15 @@ public class DeleteBook {
         BookList.getBookList().remove(indeks);
     }
 
-    private static boolean checkIfBookIsInList(List<Book> books, String tytul) {
-        return books.stream().map(book -> book.getTytul()).anyMatch(s -> s.equals(tytul));
-    }
+//    private static String titleWarning(Scanner scanner, String tytul) {
+//        CheckListContent checkListContent= new CheckListContent();
+//        boolean check=checkListContent.checkIfBookIsInList(BookList.getBookList(), tytul);
+//        while (!check) {
+//            System.out.println("Nieprawidłowy tytuł!!");
+//            tytul = scanner.nextLine();
+//        }
+//        return tytul;
+//    }
+
 
 }

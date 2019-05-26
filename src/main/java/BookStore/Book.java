@@ -6,6 +6,7 @@ public class Book {
     private int rokWydania;
 
 
+
     public Book(String tytul,int rokWydania, String isbnNumer) {
         this.tytul = tytul;
         this.isbnNumer = isbnNumer;
@@ -21,12 +22,18 @@ public class Book {
         return isbnNumer;
     }
 
+    public void setRokWydania(int rokWydania) {
+       this.rokWydania=rokWydania;
+    }
+
+
     public int getRokWydania() {
         return rokWydania;
     }
-
     @Override
     public String toString() {
         return tytul +" " + rokWydania +" " + isbnNumer;
     }
+
+
 }

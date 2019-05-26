@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Programowanie1_Piotr_Paierski/src/main/main.iml" filepath="$PROJECT_DIR$/../Programowanie1_Piotr_Paierski/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../Programowanie1_Piotr_Paierski/src/test/test.iml" filepath="$PROJECT_DIR$/../Programowanie1_Piotr_Paierski/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SDA_JAVA_MICHAL/SDA_JAVA_MICHAL.iml" filepath="$PROJECT_DIR$/../SDA_JAVA_MICHAL/SDA_JAVA_MICHAL.iml" />
     </modules>
   </component>
 </project>

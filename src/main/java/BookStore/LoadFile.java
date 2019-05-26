@@ -17,7 +17,7 @@ public class LoadFile {
             while (linia != null) {
 
                 String[] slowo = linia.split(";");
-                Book ksiazka = new Book(slowo[0], Integer.parseInt(slowo[1]), slowo[2]);
+                Book ksiazka = new Book(slowo[0], Integer.parseInt(slowo[2]), slowo[1]);
                 BookList.getBookList().add(ksiazka);
                 linia = br.readLine();
             }

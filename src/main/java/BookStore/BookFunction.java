@@ -66,7 +66,7 @@ public class BookFunction {
     }
 
     //Stream filtruje ksiązki których data większa od 2007. wcześniej zamieniam na integera a na koniec zliczam
-    public long returnNumberBooksAfter2007(List<Book> bookList) {
+    public static long returnNumberBooksAfter2007(List<Book> bookList) {
         return bookList.stream()
                 .filter(ksiazka -> ksiazka.getRokWydania() > 2007)
                 .count();
@@ -108,14 +108,14 @@ public class BookFunction {
                 .collect(Collectors.toMap(x -> x.getIsbnNumer(), x -> x));
     }
 
-    public List<Book> sortBookDateLast(List<Book> bookList) {
+    public static List<Book> sortBookDateLast(List<Book> bookList) {
         return bookList.stream()
                 .sorted(Comparator.comparingInt(Book::getRokWydania))
                 .collect(Collectors.toList());
 
     }
 
-    public List<Book> sortBookDateFirst(List<Book> bookList) {
+    public static List<Book> sortBookDateFirst(List<Book> bookList) {
         return bookList.stream()
                 .sorted(Comparator.comparingInt(Book::getRokWydania).reversed())
                 .collect(Collectors.toList());
