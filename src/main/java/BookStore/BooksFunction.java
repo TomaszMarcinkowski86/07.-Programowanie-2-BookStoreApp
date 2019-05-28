@@ -42,7 +42,8 @@ public class BooksFunction {
                 //return bookYear2.compareTo(bookYear1);
             }
         };
-        Collections.sort(bookList, BookYearComparator);
+//
+        bookList.sort(BookYearComparator);
     }
 
     // wywołanie comparatora i zwracam 1-szy element

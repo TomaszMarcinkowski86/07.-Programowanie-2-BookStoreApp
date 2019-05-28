@@ -1,11 +1,13 @@
 package BookStore;
 
-import BookStore.DisplayFormatStrategy.BookPrintStrategy;
-import BookStore.DisplayFormatStrategy.IsbnYearTitleBookPrintStrategy;
-import BookStore.DisplayFormatStrategy.TitleYearIsbnBookPrintStrategy;
-import BookStore.DisplayFormatStrategy.YearTitleIsbnBookPrintStrategy;
-import BookStore.Modifications.DeleteBook;
-import BookStore.Modifications.EditYear;
+import BookStore.display.format.strategy.BookPrintStrategy;
+import BookStore.display.format.strategy.IsbnYearTitleBookPrintStrategy;
+import BookStore.display.format.strategy.TitleYearIsbnBookPrintStrategy;
+import BookStore.display.format.strategy.YearTitleIsbnBookPrintStrategy;
+import BookStore.load.save.file.LoadBookFile;
+import BookStore.load.save.file.SaveBookListToFile;
+import BookStore.modifications.DeleteBook;
+import BookStore.modifications.EditYear;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import java.util.Scanner;
 
 public class BookStore {
 
-    static List<Book> bookList = new ArrayList<>();
+    public static List<Book> bookList = new ArrayList<>();
 
     static {
         try {
@@ -55,7 +57,7 @@ public class BookStore {
                 case 2:
                     AddBook.addBook();
                     System.out.println("Dodałeś nową książkę: ");
-                    whatNext("Co chcesz zrobić dalej? ");
+                    System.out.println(("Co chcesz zrobić dalej? "));
                     break;
                 case 3:
                     DeleteBook.deleteBook();
@@ -103,8 +105,5 @@ public class BookStore {
 
     }
 
-    private static void whatNext(String s) {
-        System.out.println(s);
-    }
 
 }

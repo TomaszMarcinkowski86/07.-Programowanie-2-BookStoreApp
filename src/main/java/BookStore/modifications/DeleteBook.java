@@ -1,4 +1,4 @@
-package BookStore.Modifications;
+package BookStore.modifications;
 
 
 import BookStore.Book;

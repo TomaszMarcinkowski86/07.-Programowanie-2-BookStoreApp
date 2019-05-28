@@ -1,4 +1,7 @@
-package BookStore;
+package BookStore.load.save.file;
+
+
+import BookStore.Book;
 
 import java.io.*;
 
@@ -17,9 +20,9 @@ public class SaveBookListToFile {
                 String lineToWrite = line.getTitle() + "; " + line.getYearOfPublishment() + "; " + line.getIsbnNumber();
                 bw.write(lineToWrite + ":" + "\n");
             }
-            bw.close();
+
         } catch (IOException ex) {
-            ex.printStackTrace();
+
         }
 
     }

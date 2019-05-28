@@ -1,4 +1,4 @@
-package Dodatkowe;
+package extras;
 
 import java.util.*;
 

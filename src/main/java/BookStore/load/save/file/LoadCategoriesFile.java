@@ -1,7 +1,11 @@
-package BookStore;
+package BookStore.load.save.file;
+
+import BookStore.Category;
+import BookStore.CategoryList;
 
 import java.io.*;
 import java.util.List;
+
 
 public class LoadCategoriesFile {
 
@@ -20,7 +24,6 @@ public class LoadCategoriesFile {
                 linia = br.readLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
 
         }
         return CategoryList.getCategoryList();

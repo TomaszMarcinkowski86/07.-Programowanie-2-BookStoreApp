@@ -1,4 +1,7 @@
-package BookStore;
+package BookStore.load.save.file;
+
+import BookStore.Author;
+import BookStore.AuthorList;
 
 import java.io.*;
 import java.util.List;
@@ -6,7 +9,7 @@ import java.util.List;
 public class LoadAuthorsFile {
 
 
-    static List<Author> loadFile() throws FileNotFoundException {
+   public static List<Author> loadFile()  {
         String path = "E:/JAVA/Programowanie2/src/main/resources/authors.csv";
         File authorsListFile = new File(path);
 
@@ -21,7 +24,6 @@ public class LoadAuthorsFile {
                 linia = br.readLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
 
         }
         return AuthorList.getAuthorList();

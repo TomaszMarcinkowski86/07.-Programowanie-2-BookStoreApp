@@ -133,7 +133,7 @@ public class BooksFunctionTest {
     @Test
     public void splitListTo3Lists() {
         List<List<Book>> lists = booksFunction.splitListTo3Lists(bookList);
-        for (List<Book> sublist : lists) ;
+        for (List<Book> sublist : lists) ; //TODO poprawić
     }
 
     @Test

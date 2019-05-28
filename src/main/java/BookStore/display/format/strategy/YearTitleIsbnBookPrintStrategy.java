@@ -1,4 +1,4 @@
-package BookStore.DisplayFormatStrategy;
+package BookStore.display.format.strategy;
 
 import BookStore.Book;
 
