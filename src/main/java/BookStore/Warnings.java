@@ -11,6 +11,7 @@ public class Warnings {
         while (!checkIsBookInList) {
             System.out.println("Nieprawidłowy tytuł!!");
             tytul = scanner.nextLine();
+            checkIsBookInList=checkListContent.checkIfBookIsInList(BookList.getBookList(), tytul);
         }
         return tytul;
     }

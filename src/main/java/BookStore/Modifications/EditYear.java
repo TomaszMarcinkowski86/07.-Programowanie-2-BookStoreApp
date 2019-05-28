@@ -16,8 +16,7 @@ public class EditYear {
         System.out.println("Podaj tytuł ksiązki do edycji roku wydania: " + BookList.getBookList().stream()
                 .map(book -> book.getTitle()).collect(Collectors.joining(", ")));
         String tytul = scanner.nextLine();
-
-
+        //Warnings.titleWarning(scanner, tytul);
         int newYear;
         for (Book book : BookList.getBookList()) {
             if (book.getTitle().equals(tytul)) {
