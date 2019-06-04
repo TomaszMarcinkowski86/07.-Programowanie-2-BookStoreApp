@@ -20,12 +20,12 @@ public class LoadAuthorsFile {
 
                 String[] slowo = linia.split(";");
                 Author author = new Author(Integer.parseInt(slowo[0]), slowo[1], Integer.parseInt(slowo[2]));
-                AuthorList.getAuthorList().add(author);
+                AuthorList.getAuthorsList().add(author);
                 linia = br.readLine();
             }
         } catch (IOException e) {
 
         }
-        return AuthorList.getAuthorList();
+        return AuthorList.getAuthorsList();
     }
 }

@@ -12,7 +12,7 @@ public class LoadBookFile {
 
    public static List<BookStore.Book> loadFile() throws FileNotFoundException {
         String path = "E:/JAVA/Programowanie2/src/main/resources" +
-                "/books.csv";
+                "/books2.csv";
         File bookListFile = new File(path);
 
         try (BufferedReader br = new BufferedReader(new FileReader(bookListFile))) {
@@ -21,7 +21,7 @@ public class LoadBookFile {
             while (linia != null) {
 
                 String[] slowo = linia.split(";");
-                Book ksiazka = new Book(slowo[0], parseInt(slowo[2]), Long.parseLong(slowo[1]) );
+                Book ksiazka = new Book(slowo[1], parseInt(slowo[3]), Long.parseLong(slowo[2]) );
                 BookList.getBookList().add(ksiazka);
                 linia = br.readLine();
             }

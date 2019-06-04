@@ -1,9 +1,6 @@
 package BookStore;
 
-import BookStore.display.format.strategy.BookPrintStrategy;
-import BookStore.display.format.strategy.IsbnYearTitleBookPrintStrategy;
-import BookStore.display.format.strategy.TitleYearIsbnBookPrintStrategy;
-import BookStore.display.format.strategy.YearTitleIsbnBookPrintStrategy;
+import BookStore.display.format.strategy.*;
 import BookStore.load.save.file.LoadBookFile;
 import BookStore.load.save.file.SaveBookListToFile;
 import BookStore.modifications.DeleteBook;
@@ -18,6 +15,7 @@ import java.util.Scanner;
 public class BookStore {
 
     public static List<Book> bookList = new ArrayList<>();
+    public static List<Author> authorsList = new ArrayList<>();
 
     static {
         try {
@@ -42,11 +40,14 @@ public class BookStore {
         System.out.println("10. FORMAT: Tytuł, Rok, ISBN ");
         System.out.println("11. FORMAT: Rok, Tytuł, ISBN ");
         System.out.println("12. FORMAT: ISBN, Rok, Tytuł ");
+        System.out.println("13. Wyświetl wszystkie kategorie");
+        System.out.println("14. Wyświetl wszystkich autorów");
 
 
         Scanner scanner = new Scanner(System.in);
         int choose;
         BookPrintStrategy bookPrintStrategy = new TitleYearIsbnBookPrintStrategy();
+        AuthorPrintStrategy authorPrintStrategy =new AuthorIdNamePrintStrategy();
         do {
             choose = scanner.nextInt();
             switch (choose) {
@@ -56,32 +57,38 @@ public class BookStore {
                     break;
                 case 2:
                     AddBook.addBook();
-                    System.out.println("Dodałeś nową książkę: ");
+                    System.out.println("Dodałeś nową książkę! ");
                     System.out.println(("Co chcesz zrobić dalej? "));
                     break;
                 case 3:
                     DeleteBook.deleteBook();
+                    System.out.println("Usunąłeś książkę! ");
                     System.out.println("Co chcesz zrobić dalej? ");
                     break;
                 case 4:
                     EditYear.editYear();
                     System.out.println("Zmieniono rok wydania książki");
+                    System.out.println("Co chcesz zrobić dalej? ");
                     break;
                 case 5:
                     SaveBookListToFile.saveFile();
                     System.out.println("Zapisano do pliku w: ");
+                    System.out.println("Co chcesz zrobić dalej? ");
                     break;
                 case 6:
-                    System.out.println("Posortowano po dacie rosnąco");
                     bookPrintStrategy.print(BooksFunction.sortBookDateLast(bookList));
+                    System.out.println("Posortowano po dacie rosnąco");
+                    System.out.println("Co chcesz zrobić dalej? ");
                     break;
                 case 7:
-                    System.out.println("Posortowano po dacie malejąco");
                     bookPrintStrategy.print(BooksFunction.sortBookDateFirst(bookList));
+                    System.out.println("Posortowano po dacie malejąco");
+                    System.out.println("Co chcesz zrobić dalej? ");
                     break;
                 case 8:
                     System.out.println("Liczba Ksiażek wydanych po 2007:" + " "
                             + BooksFunction.returnNumberBooksAfter2007(bookList));
+                    System.out.println("Co chcesz zrobić dalej? ");
                     break;
                 case 9:
                     System.out.println("Zapraszamy ponownie");
@@ -97,6 +104,13 @@ public class BookStore {
                 case 12:
                     bookPrintStrategy = new IsbnYearTitleBookPrintStrategy();
                     System.out.println("Lista będzie wyświetlana w Formacie: ISBN, Rok, Tytuł");
+                    break;
+                case 13:
+                    System.out.println("Kategorie książek w księgarni");
+                    break;
+                case 14:
+                    System.out.println("Autorzy:");
+                    authorPrintStrategy.print(authorsList); //todo niedziała sprawdzic
                     break;
                 default:
                     System.out.println("Wybrałeś nieprawidłową komendę");

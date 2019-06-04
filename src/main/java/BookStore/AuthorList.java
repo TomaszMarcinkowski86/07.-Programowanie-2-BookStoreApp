@@ -7,9 +7,9 @@ public class AuthorList {
 
     private static final AuthorList AUTHOR_LIST = new AuthorList();
 
-    private static List<Author> authorList = new ArrayList<>();
+    private static List<Author> authorsList = new ArrayList<>();
 
-    public static List<Author> getAuthorList() {
-        return authorList;
+    public static List<Author> getAuthorsList() {
+        return authorsList;
     }
 }
