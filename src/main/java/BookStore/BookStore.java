@@ -1,6 +1,7 @@
 package BookStore;
 
 import BookStore.display.format.strategy.*;
+import BookStore.load.save.file.LoadAuthorsFile;
 import BookStore.load.save.file.LoadBookFile;
 import BookStore.load.save.file.SaveBookListToFile;
 import BookStore.modifications.DeleteBook;
@@ -15,14 +16,16 @@ import java.util.Scanner;
 public class BookStore {
 
     public static List<Book> bookList = new ArrayList<>();
-    public static List<Author> authorsList = new ArrayList<>();
-
     static {
         try {
             bookList = LoadBookFile.loadFile();
         } catch (FileNotFoundException e) {
             System.out.println("Nie znaleziono pliku");
         }
+    }
+    public static List<Author> authorsList;
+    static {
+        authorsList = LoadAuthorsFile.loadFile();
     }
 
     public static void main(String[] args) throws IOException {
@@ -110,7 +113,7 @@ public class BookStore {
                     break;
                 case 14:
                     System.out.println("Autorzy:");
-                    authorPrintStrategy.print(authorsList); //todo niedziała sprawdzic
+                    authorPrintStrategy.print(authorsList);
                     break;
                 default:
                     System.out.println("Wybrałeś nieprawidłową komendę");
